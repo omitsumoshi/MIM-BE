@@ -6,7 +6,7 @@ module.exports = () => {
 // GET/index
 router.get('/', IncidentController.index)
 // POST/CREATE
-router.post('/add', IncidentController.create)
+router.post('/create', IncidentController.create)
 // PATCH/update
 router.patch('/update', IncidentController.update)
 // DELETE/delete

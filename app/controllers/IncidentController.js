@@ -1,4 +1,5 @@
 const IncidentModel = require('../models/IncidentModel')
+const CustomerModel = require('../models/CustomerModel')
 
 module.exports = {
     index: (req, res)=>{
@@ -15,9 +16,10 @@ module.exports = {
             }
         })
     },
-    create: (req, res) => {
+    create: async (req, res) => {
+        let customer = await CustomerModel.findOne({name:req.body.customer}).exec()
         const incident = new IncidentModel({
-            customer: req.body.customer,
+            customer: customer.id,
             country: req.body.country,
             zone: req.body.zone,
             services: req.body.services,
@@ -37,8 +39,8 @@ module.exports = {
 },
 update: (req, res) => {
     // Sprawdzic to z Lukaszem, jak to potem przetlumaczyc na front end
-    const id = req.params.id
-    IncidentModel.findByIdAndUpdate(id).then(()=>{
+    const id = req.body.id
+    IncidentModel.findByIdAndUpdate(id, req.body).then(()=>{
         return res.status(200).json()
     })
     .catch((err)=>{
@@ -49,7 +51,7 @@ update: (req, res) => {
     })
 },
 delete: (req, res) =>{
-    const id = req.params.id
+    const id = req.query.id
     IncidentModel.findByIdAndDelete(id).then(()=>{
         return res.status(200).json()
     })

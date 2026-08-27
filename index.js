@@ -13,9 +13,14 @@ mongoose
 })
 
 const app = express()
-
+app.use(express.json())
 app.use(cors())
 
+const customerRoutes = require('./app/routes/CustomerRoutes')();
+app.use('/customer', customerRoutes)
+
+const incidentRoutes = require('./app/routes/IncidentRoutes')();
+app.use('/incident', incidentRoutes)
 
 app.listen(8080, ()=>{
     console.log('Express server is working')

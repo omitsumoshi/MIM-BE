@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const IncidentSchema = new Schema({
     customer: {
         type: String,
-        required: true,
+        required: true
     },
     country: {
         type: String,

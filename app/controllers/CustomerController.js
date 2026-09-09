@@ -13,6 +13,19 @@ module.exports = {
             })
         })
     },
+    get: (req, res)=>{
+        const id = req.params.id
+        CustomerModel.findById(id)
+        .then((customer)=>{
+            res.json(customer)
+        })
+        .catch((err)=>{
+            return res.status(500).json({
+                message: 'Error while fetching a Customer',
+                error: err
+            })
+        })
+    },
     create: (req, res)=>{
         const customer = new CustomerModel({
             name: req.body.name,

@@ -6,6 +6,8 @@ const CustomerController = require('../controllers/CustomerController')
 module.exports = () => {
     //GET index
     router.get('/', CustomerController.index)
+    //GET getOne
+    router.get('/:id', CustomerController.get)
     //POST create
     router.post('/create', CustomerController.create)
     //PATCH update

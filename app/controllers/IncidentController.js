@@ -16,10 +16,24 @@ module.exports = {
             }
         })
     },
-    create: async (req, res) => {
-        let customer = await CustomerModel.findOne({name:req.body.customer}).exec()
+    get: (req, res)=>{
+        const id = req.params.id
+        IncidentModel.findById(id)
+        .then((event)=>{
+            res.json(event)
+        })
+        .catch((err)=>{
+            if(err) {
+                return res.status(500).json({
+                    message: 'Error while fetching incidents',
+                    error: err
+                })
+            }
+        })
+    },
+    create: (req, res) => {
         const incident = new IncidentModel({
-            customer: customer.id,
+            customer: req.body.customer,
             country: req.body.country,
             zone: req.body.zone,
             services: req.body.services,

@@ -29,7 +29,7 @@ const IncidentSchema = new Schema({
     rootCause: String,
     
     status: {
-        type: String,
+        type: String, default: 'open'
         // required: true
     }
 

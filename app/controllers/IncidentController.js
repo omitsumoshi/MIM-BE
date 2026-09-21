@@ -53,8 +53,8 @@ module.exports = {
 },
 update: (req, res) => {
     // Sprawdzic to z Lukaszem, jak to potem przetlumaczyc na front end
-    const id = req.body.id
-    IncidentModel.findByIdAndUpdate(id, req.body).then(()=>{
+    const id = req.params.id
+    IncidentModel.findByIdAndUpdate(id, req.body).then((incident)=>{
         return res.status(200).json()
     })
     .catch((err)=>{

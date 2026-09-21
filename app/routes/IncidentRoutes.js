@@ -10,7 +10,7 @@ router.get('/:id', IncidentController.get)
 // POST/CREATE
 router.post('/create', IncidentController.create)
 // PATCH/update
-router.patch('/update', IncidentController.update)
+router.patch('/update/:id', IncidentController.update)
 // DELETE/delete
 router.delete('/delete', IncidentController.delete)
 

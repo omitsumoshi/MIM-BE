@@ -36,6 +36,8 @@ module.exports = {
             customer: req.body.customer,
             country: req.body.country,
             zone: req.body.zone,
+            title: req.body.title,
+            description: req.body.description,
             services: req.body.services,
             teams: req.body.teams,
             controller: req.body.controller,

@@ -14,6 +14,14 @@ const IncidentSchema = new Schema({
         type: String,
         required: true
     },
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
     services: {
         type: String,
         required: true

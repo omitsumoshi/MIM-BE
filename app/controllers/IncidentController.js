@@ -4,6 +4,7 @@ const CustomerModel = require('../models/CustomerModel')
 module.exports = {
     index: (req, res)=>{
         IncidentModel.find({})
+        .populate('customer', 'name')
         .then((events)=>{
             res.json(events)
         })
@@ -19,6 +20,7 @@ module.exports = {
     get: (req, res)=>{
         const id = req.params.id
         IncidentModel.findById(id)
+        .populate('customer', 'name')
         .then((event)=>{
             res.json(event)
         })

@@ -3,7 +3,8 @@ const Schema = mongoose.Schema
 
 const IncidentSchema = new Schema({
     customer: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Customer',
         required: true
     },
     country: {
@@ -38,7 +39,6 @@ const IncidentSchema = new Schema({
     
     status: {
         type: String, default: 'open'
-        // required: true
     }
 
 

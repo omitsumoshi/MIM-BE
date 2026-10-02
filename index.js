@@ -22,6 +22,9 @@ app.use('/customer', customerRoutes)
 const incidentRoutes = require('./app/routes/IncidentRoutes')();
 app.use('/incident', incidentRoutes)
 
+const dashboardRoutes = require('./app/routes/DashboardRoutes')();
+app.use('/dashboard', dashboardRoutes)
+
 app.listen(8080, ()=>{
     console.log('Express server is working')
 })

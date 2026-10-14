@@ -1,3 +1,4 @@
+process.loadEnvFile('.env');
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
@@ -24,6 +25,12 @@ app.use('/incident', incidentRoutes)
 
 const dashboardRoutes = require('./app/routes/DashboardRoutes')();
 app.use('/dashboard', dashboardRoutes)
+
+const teamsRoutes = require('./app/routes/TeamsRoutes')();
+app.use('/teams', teamsRoutes)
+
+const userRoutes = require('./app/routes/UserRoutes')();
+app.use('/user', userRoutes)
 
 app.listen(8080, ()=>{
     console.log('Express server is working')
